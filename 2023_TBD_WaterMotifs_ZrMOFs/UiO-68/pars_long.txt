@@ -1,0 +1,93 @@
+#Fixed charges
+#---------------
+
+FIXQ:UNIT Q0 e
+FIXQ:UNIT P e
+FIXQ:UNIT R angstrom
+FIXQ:SCALE 1 1.0
+FIXQ:SCALE 2 1.0
+FIXQ:SCALE 3 1.0
+FIXQ:DIELECTRIC 1.0
+
+# Atomic parameters
+# ----------------------------------------------------
+# KEY        label  Q_0A              R_A
+# ----------------------------------------------------
+FIXQ:ATOM       ZR  0.0000000000000   2.3670000000
+FIXQ:ATOM     O_OH  0.0000000000000   1.1180000000
+FIXQ:ATOM     O_OX  0.0000000000000   1.1180000000
+FIXQ:ATOM     O_CA  0.0000000000000   1.1180000000
+FIXQ:ATOM     H_OH  0.0000000000000   0.7240000000
+FIXQ:ATOM     C_CA  0.0000000000000   1.1630000000
+FIXQ:ATOM       C1  0.0000000000000   1.1630000000
+FIXQ:ATOM       C2  0.0000000000000   1.1630000000
+FIXQ:ATOM       C3  0.0000000000000   1.1630000000
+FIXQ:ATOM       C4  0.0000000000000   1.1630000000
+FIXQ:ATOM       C5  0.0000000000000   1.1630000000
+FIXQ:ATOM       C6  0.0000000000000   1.1630000000
+FIXQ:ATOM       H2  0.0000000000000   0.7240000000
+FIXQ:ATOM       H3  0.0000000000000   0.7240000000
+FIXQ:ATOM       H6  0.0000000000000   0.7240000000
+
+FIXQ:ATOM        O  0.000000000       0.000000000
+FIXQ:ATOM        H  0.556400000       0.000000000
+FIXQ:ATOM        M -1.112800000       0.000000000
+
+# Bond parameters
+# ----------------------------------------------------
+# KEY         label0   label1           P_AB          
+# ----------------------------------------------------
+FIXQ:BOND      O_CA        ZR  -0.3148189271
+FIXQ:BOND      O_OX        ZR  -0.3636593853
+FIXQ:BOND      H_OH      O_OH   0.4884071203
+FIXQ:BOND      C_CA      O_CA   0.37005940945
+FIXQ:BOND      O_OH        ZR  -0.1875074974
+FIXQ:BOND        C6        H6  -0.1388421720
+FIXQ:BOND        C1        C2  -0.0598868781
+FIXQ:BOND        C2        H2  -0.1464955662
+FIXQ:BOND        C2        C3   0.0029800930
+FIXQ:BOND        C3        H3  -0.1416669245
+FIXQ:BOND        C4        C5  -0.0032546728
+FIXQ:BOND        C1      C_CA  -0.0480051792
+FIXQ:BOND        C5        C6   0.0216944355
+FIXQ:BOND        C3        C4  -0.0419918022
+FIXQ:BOND        C6        C6   0.0000000000
+
+
+# van der Waals
+#==============
+
+# The following mathemetical form is supported:
+#  - LJ:    4.0*EPSILON*((SIGMA/r)^12 - (SIGMA/r)^6)
+#
+# Remark:
+#  In LJ, if ONLYPAULI=1 then only the pauli term will be used.
+
+LJ:UNIT SIGMA angstrom
+LJ:UNIT EPSILON kcalmol
+LJ:SCALE 1 0.0
+LJ:SCALE 2 0.0
+LJ:SCALE 3 1.0
+
+# ---------------------------------------------
+# KEY      ffatype  SIGMA  EPSILON
+# ---------------------------------------------
+LJ:PARS      ZR     2.783   0.0690     
+LJ:PARS    O_CA     3.033   0.0957     
+LJ:PARS    O_OX     3.033   0.0957     
+LJ:PARS    O_OH     3.033   0.0957     
+LJ:PARS    C_CA     3.473   0.0951     
+LJ:PARS      C1     3.473   0.0951     
+LJ:PARS      C2     3.473   0.0951     
+LJ:PARS      C3     3.473   0.0951     
+LJ:PARS      C4     3.473   0.0951     
+LJ:PARS      C5     3.473   0.0951     
+LJ:PARS      C6     3.473   0.0951     
+LJ:PARS    H_OH     2.846   0.0152     
+LJ:PARS      H2     2.846   0.0152     
+LJ:PARS      H3     2.846   0.0152 
+LJ:PARS      H6     2.846   0.0152       
+  
+LJ:PARS       O     3.1589  0.1852     
+LJ:PARS       H     1.620   0.000      
+LJ:PARS       M     1.620   0.000      

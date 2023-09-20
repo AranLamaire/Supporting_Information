@@ -1,0 +1,50 @@
+<simulation verbosity="low">
+   <output prefix="UiO66">
+      <properties stride='100' filename='out'>  [step, time{picosecond}, conserved, temperature{kelvin}, kinetic_cv, potential, volume, pressure_cv{megapascal}] </properties>
+      <trajectory stride='100' filename='pos' format='xyz' cell_units='angstrom'> positions{angstrom} </trajectory>
+      <checkpoint stride='100000'/>
+   </output>
+   <total_steps> 1000000 </total_steps>
+   <prng>
+      <seed> 32345 </seed>
+   </prng>
+   <ffsocket name="yaff1" mode="unix" pbc="False">
+      <address> UiO66_160_H2O_Trotter_32_300K_short </address>
+   </ffsocket>
+   <ffsocket name="yaff2" mode="unix" pbc="False">
+      <address> UiO66_160_H2O_Trotter_32_300K_long </address>
+   </ffsocket>
+   <system>
+      <initialize nbeads="32">
+         <positions mode='xyz' units='angstrom'> init.xyz </positions>
+         <labels mode='xyz'> init.xyz </labels>
+         <masses mode='xyz'> init.xyz </masses>
+         <cell mode='manual' units='angstrom'> [21.328000, 0.000000, 0.000000, 0.000000, 21.328000, 0.000000, 0.000000, 0.000000, 21.328000] </cell>
+      </initialize>
+      <forces>
+         <force nbeads="32" forcefield="yaff1"> </force>
+         <force nbeads="8" forcefield="yaff2"> </force>
+      </forces>
+      <ensemble>
+         <temperature units="kelvin"> 300 </temperature>
+         <stress units="megapascal"> [0.1, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.1] </stress>
+      </ensemble>
+      <motion mode='dynamics'>
+         <dynamics mode="nst">
+            <barostat mode="anisotropic">
+               <tau units="femtosecond"> 1000 </tau>
+               <h0 shape="(3, 3)" units="angstrom"> [21.328000, 0.000000, 0.000000, 0.000000, 21.328000, 0.000000, 0.000000, 0.000000, 21.328000] </h0>
+               <thermostat mode="langevin">
+                  <tau units="femtosecond"> 100 </tau>
+               </thermostat>
+            </barostat>
+            
+            <thermostat mode="pile_l">
+               <tau units="femtosecond"> 100 </tau>
+            </thermostat>
+
+            <timestep units="femtosecond"> 0.25 </timestep>
+         </dynamics>
+      </motion> 
+   </system>
+</simulation>
